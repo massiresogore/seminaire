@@ -68,7 +68,8 @@ Fonctionnalités de l'interface :
 
 ## <ins>Travail à faire 2 <ins>
 ### A. Création des Entités et Repository
-L'interface de gestion des séminaires et conférences offrira une solution centralisée pour la
-planification, la publication et la promotion des événements académiques et professionnels. En
-facilitant la communication entre les organisateurs, les intervenants et les participants, cette
-plateforme contribuera à renforcer l'impact et la visibilité des séminaires et des conférences.
+Créez toutes les entités nécessaires dans votre IDE Eclipse ou Intellij. Assurez-vous également
+d'appliquer les contraintes appropriées à ces entités, telles que la taille, les valeurs minimales et
+maximales, et l'obligation de ne pas être nulles.
+Pour chaque entité définie, créez également son repository correspondant.
+La prochaine présentation est prévue pour le lundi.
