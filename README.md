@@ -54,7 +54,7 @@ Fonctionnalités de l'interface :
    facilitant la communication entre les organisateurs, les intervenants et les participants, cette
    plateforme contribuera à renforcer l'impact et la visibilité des séminaires et des conférences.
 
-## <ins>Travail à faire : la conception<ins>
+## <ins>Travail à faire 1 : la conception<ins>
 ### A. Merise
 1. Dictionnaire de données.
 2. Déterminations des objets
@@ -63,5 +63,12 @@ Fonctionnalités de l'interface :
 5. Modèle logique des données
 
 ### A. Uml
-1. Diagramme de classe
-2. Diagramme de cas d’utilisation
+1. Diagramme de classe ✅
+2. Diagramme de cas d’utilisation 
+
+## <ins>Travail à faire 2 <ins>
+### A. Création des Entités et Repository
+L'interface de gestion des séminaires et conférences offrira une solution centralisée pour la
+planification, la publication et la promotion des événements académiques et professionnels. En
+facilitant la communication entre les organisateurs, les intervenants et les participants, cette
+plateforme contribuera à renforcer l'impact et la visibilité des séminaires et des conférences.
