@@ -1,4 +1,4 @@
-package com.warrios.seminaire.entity;
+package com.warrios.seminaire.modeles;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

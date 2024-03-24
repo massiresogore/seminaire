@@ -1,43 +1,29 @@
-package com.warrios.seminaire.models;
-
+package com.warrios.seminaire.modeles;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.*;
 
 import java.util.Date;
-@Getter
-@Setter
 @Entity
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Annonce {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private Date date;
+
+    @NotNull
+    @Size(min = 2, max = 14)
     private String titre;
-    @Column( length = 30 )
+
+    @NotNull
+    @Size(min = 2, max = 20)
     private String lieu;
+
     private Date date_update;
 
-
-    public Annonce() {
-    }
-
-    public Annonce(Date date, String titre, String lieu, Date date_update) {
-        this.date = date;
-        this.titre = titre;
-        this.lieu = lieu;
-        this.date_update = date_update;
-    }
-
-    @Override
-    public String toString() {
-        return "Annonce{" +
-                "id=" + id +
-                ", date=" + date +
-                ", titre='" + titre + '\'' +
-                ", lieu='" + lieu + '\'' +
-                ", date_update=" + date_update +
-                '}';
-    }
 }
