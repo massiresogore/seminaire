@@ -1,0 +1,10 @@
+.idea/
+target/
+.factorypath
+.classpath
+.settings
+HELP.md
+mvnw
+mvnw.cmd
+nnn
+../.idea/

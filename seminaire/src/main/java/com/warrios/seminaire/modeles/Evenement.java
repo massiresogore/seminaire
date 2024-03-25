@@ -1,5 +1,6 @@
 package com.warrios.seminaire.modeles;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import jakarta.persistence.Entity;
@@ -24,7 +25,8 @@ public class Evenement {
 	@NotNull
 	@Size(min = 2, max = 50)
 	private String adresse;
-	private Date adresse_evenement;
+	@Size(min=2, max=27)
+	private String theme;
 
 	@NotNull
 	@Size(min = 2, max = 500)
