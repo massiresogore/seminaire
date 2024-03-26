@@ -1,12 +1,11 @@
 package com.warrios.seminaire.modeles;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -32,5 +31,31 @@ public class Evenement {
 	@Size(min = 2, max = 500)
 	private String description_evenement;
 
+	@ManyToMany
+			@JoinTable(
+					name = "planning",
+					joinColumns = @JoinColumn(name = "evenement_id"),
+					inverseJoinColumns = @JoinColumn(name = "calendrier_id")
+			)
+	List<Calendrier> calendrierList = new ArrayList<>();
+
+	@ManyToOne
+	@JoinColumn(name = "utilisateur_id")
+	private Utilisateur utilisateur;
+
+	@ManyToMany
+			@JoinTable(
+					name = "participation",
+					joinColumns = @JoinColumn(name = "evenement_id"),
+					inverseJoinColumns = @JoinColumn(name = "utilisateur_id")
+			)
+	List<Utilisateur> utilisateurList = new ArrayList<>();
+
+
+	@OneToMany(mappedBy = "evenement")
+	List<Annonce> annonceList = new ArrayList<>();
+
+	@OneToMany(mappedBy = "evenement")
+	List<Notification> notificationList = new ArrayList<>();
 
 }

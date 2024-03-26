@@ -23,5 +23,9 @@ public class Notification {
     private String message;
     private LocalDate date_envoi = LocalDate.now();
     private LocalDate date_reception = LocalDate.now();
+
+    @ManyToOne
+    @JoinColumn(name = "evenement_id")
+    private Evenement evenement;
     
 }

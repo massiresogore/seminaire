@@ -4,13 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -23,10 +17,20 @@ public class Calendrier {
 	private Integer id_calendrier;
 	private Date date_calendrier;
 
-	@OneToOne
+	@ManyToOne
     @JoinColumn(name = "utilisateur_id")
     private Utilisateur utilisateur;
-	
-	 @OneToMany(mappedBy = "calendrier")
-	 private List<Evenement> evenements = new ArrayList<>();
+
+	@ManyToMany
+	@JoinTable(
+			name = "planning",
+			joinColumns = @JoinColumn(name = "calendrier_id"),
+			inverseJoinColumns = @JoinColumn(name = "evenement_id")
+	)
+	List<Evenement> evenementList = new ArrayList<>();
+
+
+
+
+
 }

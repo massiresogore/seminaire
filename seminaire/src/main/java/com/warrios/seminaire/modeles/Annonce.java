@@ -26,4 +26,12 @@ public class Annonce {
 
     private Date date_update;
 
+    @ManyToOne
+    @JoinColumn(name = "utilisateur_id")
+    private Utilisateur utilisateur;
+
+    @ManyToOne
+    @JoinColumn(name = "evenement_id")
+    private Evenement evenement;
+
 }

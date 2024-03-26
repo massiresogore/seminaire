@@ -7,6 +7,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -47,5 +50,25 @@ public class Utilisateur {
     @NotNull
     @Size(min = 2, max = 14)
     private String telephone;
+
+    @OneToMany(mappedBy = "utilisateur")
+    List<Calendrier> calendrierList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "utilisateur")
+    List<Evenement> evenementList = new ArrayList<>();
+
+    @ManyToMany
+            @JoinTable(
+                    name = "participation",
+                    joinColumns = @JoinColumn(name = "utilisateur_id"),
+                    inverseJoinColumns = @JoinColumn(name = "evenement_id")
+            )
+    List<Evenement> evenement_participant_list = new ArrayList<>();
+
+    @OneToMany(mappedBy = "utilisateur")
+    List<Annonce> annonceList = getAnnonceList();
+
+    @OneToMany(mappedBy = "utilisateur")
+    List<Commentaire> commentaireList = new ArrayList<>();
 
 }
