@@ -56,20 +56,26 @@ Fonctionnalités de l'interface :
 
 ## <ins>Travail à faire 1 : la conception<ins>
 ### A. Merise
-1. Dictionnaire de données.
-2. Déterminations des objets
-3. Déterminations des relations
-4. Modèle conceptuel des données
-5. Modèle logique des données
+1. Dictionnaire de données. ✅
+2. Déterminations des objets ✅
+3. Déterminations des relations ✅
+4. Modèle conceptuel des données ✅
+5. Modèle logique des données ✅
 
 ### A. Uml
 1. Diagramme de classe ✅
-2. Diagramme de cas d’utilisation 
+2. Diagramme de cas d’utilisation ✅
 
 ## <ins>Travail à faire 2 <ins>
-### A. Création des Entités et Repository
+### A. Création des Entités et Repository ✅
 Créez toutes les entités nécessaires dans votre IDE Eclipse ou Intellij. Assurez-vous également
 d'appliquer les contraintes appropriées à ces entités, telles que la taille, les valeurs minimales et
 maximales, et l'obligation de ne pas être nulles.
 Pour chaque entité définie, créez également son repository correspondant.
-La prochaine présentation est prévue pour le lundi.
+La prochaine présentation est prévue pour le lundi
+
+### A.Troisième partie
+1. Créez un service (CRUD) pour chaque entité.
+2. Mettez en place le header et mettre les liens.
+3. Récupérez les actions dans les contrôleurs respectifs.
+
