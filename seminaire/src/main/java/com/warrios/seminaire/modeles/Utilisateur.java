@@ -51,7 +51,19 @@ public class Utilisateur {
     @Size(min = 2, max = 14)
     private String telephone;
 
-    @OneToMany(mappedBy = "utilisateur")
+    //Utilisateur sans id, l'ors de la création d'un utilisateur
+    public Utilisateur(String nom, String prenom, String affectation, String url, String login, String mdp, String email, String telephone) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.affectation = affectation;
+        this.url = url;
+        this.login = login;
+        this.mdp = mdp;
+        this.email = email;
+        this.telephone = telephone;
+    }
+
+  /*  @OneToMany(mappedBy = "utilisateur")
     List<Calendrier> calendrierList = new ArrayList<>();
 
     @OneToMany(mappedBy = "utilisateur")
@@ -65,10 +77,35 @@ public class Utilisateur {
             )
     List<Evenement> evenement_participant_list = new ArrayList<>();
 
-    @OneToMany(mappedBy = "utilisateur")
+    @OneToMany(mappedBy = "utilisateur" )
     List<Annonce> annonceList = getAnnonceList();
+    */
 
-    @OneToMany(mappedBy = "utilisateur")
-    List<Commentaire> commentaireList = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    List<Commentaire> commentaireList;
+//    List<Commentaire> commentaireList = new ArrayList<>();
 
+    public void addCommentaire(Commentaire commentaire){
+        if(commentaireList==null){
+            commentaireList = new ArrayList<>();
+        }
+
+        commentaireList.add(commentaire);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Utilisateur{" +
+                "id_user=" + id_user +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", affectation='" + affectation + '\'' +
+                ", url='" + url + '\'' +
+                ", login='" + login + '\'' +
+                ", mdp='" + mdp + '\'' +
+                ", email='" + email + '\'' +
+                ", telephone='" + telephone + '\'' +
+                '}';
+    }
 }

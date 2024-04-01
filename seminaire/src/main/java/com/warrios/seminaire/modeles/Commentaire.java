@@ -19,13 +19,20 @@ public class Commentaire {
     private Integer id_commentaire;
 
     @NotNull
-    private LocalDate date_commentaire;
+    private LocalDate date_commentaire = LocalDate.now();
 
     @NotNull
     @Size(min = 5, max = 500)
     private String contenu;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "utilisateur_id")
     private Utilisateur utilisateur;
+
+    public Commentaire(String contenu, Utilisateur utilisateur) {
+        this.contenu = contenu;
+        this.utilisateur = utilisateur;
+    }
+
+
 }
