@@ -51,6 +51,26 @@ public class Utilisateur {
     @Size(min = 2, max = 14)
     private String telephone;
 
+    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    List<Calendrier> calendrierList;//ok
+
+    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    List<Evenement> evenementList;//ok
+
+    @ManyToMany
+            @JoinTable(
+                    name = "participation",
+                    joinColumns = @JoinColumn(name = "utilisateur_id"),
+                    inverseJoinColumns = @JoinColumn(name = "evenement_id")
+            )
+    List<Evenement> evenement_participant_list;
+
+    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL )
+    List<Annonce> annonceList;//ok
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    List<Commentaire> commentaireList;//ok
+
     //Utilisateur sans id, l'ors de la création d'un utilisateur
     public Utilisateur(String nom, String prenom, String affectation, String url, String login, String mdp, String email, String telephone) {
         this.nom = nom;
@@ -63,35 +83,57 @@ public class Utilisateur {
         this.telephone = telephone;
     }
 
-  /*  @OneToMany(mappedBy = "utilisateur")
-    List<Calendrier> calendrierList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "utilisateur")
-    List<Evenement> evenementList = new ArrayList<>();
-
-    @ManyToMany
-            @JoinTable(
-                    name = "participation",
-                    joinColumns = @JoinColumn(name = "utilisateur_id"),
-                    inverseJoinColumns = @JoinColumn(name = "evenement_id")
-            )
-    List<Evenement> evenement_participant_list = new ArrayList<>();
-
-    @OneToMany(mappedBy = "utilisateur" )
-    List<Annonce> annonceList = getAnnonceList();
-    */
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "utilisateur", cascade = CascadeType.ALL)
-    List<Commentaire> commentaireList;
-//    List<Commentaire> commentaireList = new ArrayList<>();
-
+    /*Ajout commentaire*/
     public void addCommentaire(Commentaire commentaire){
         if(commentaireList==null){
             commentaireList = new ArrayList<>();
         }
 
+        commentaire.setUtilisateur(this);
         commentaireList.add(commentaire);
     }
+
+    /*Ajout Annonce*/
+    public void addAnnonce(Annonce annonce){
+        if(annonceList==null){
+            annonceList = new ArrayList<>();
+        }
+
+        annonce.setUtilisateur(this);
+        annonceList.add(annonce);
+    }
+
+    /*Ajout Evenement*/
+    public void addEvenement(Evenement evenement){
+        if(evenementList==null){
+            evenementList = new ArrayList<>();
+        }
+
+        evenement.setUtilisateur(this);
+        evenementList.add(evenement);
+    }
+
+    /*Ajout Evenement de participant*/
+    public void addEvenementParticipant(Evenement evenement){
+        if(evenement_participant_list==null){
+            evenement_participant_list = new ArrayList<>();
+        }
+
+        evenement.setUtilisateur(this);
+        evenement_participant_list.add(evenement);
+    }
+
+    /*Ajout Calendrier*/
+    public void addCalendrier(Calendrier calendrier){
+        if(calendrierList==null){
+            calendrierList = new ArrayList<>();
+        }
+
+        calendrier.setUtilisateur(this);
+        calendrierList.add(calendrier);
+    }
+
+
 
 
     @Override

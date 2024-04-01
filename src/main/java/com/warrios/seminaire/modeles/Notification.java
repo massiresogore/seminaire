@@ -24,8 +24,21 @@ public class Notification {
     private LocalDate date_envoi = LocalDate.now();
     private LocalDate date_reception = LocalDate.now();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "evenement_id")
     private Evenement evenement;
-    
+
+    public Notification(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "Notification{" +
+                "id_notification=" + id_notification +
+                ", message='" + message + '\'' +
+                ", date_envoi=" + date_envoi +
+                ", evenement=" + evenement +
+                '}';
+    }
 }

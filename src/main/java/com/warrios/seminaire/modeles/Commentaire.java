@@ -29,9 +29,8 @@ public class Commentaire {
     @JoinColumn(name = "utilisateur_id")
     private Utilisateur utilisateur;
 
-    public Commentaire(String contenu, Utilisateur utilisateur) {
+    public Commentaire(String contenu) {
         this.contenu = contenu;
-        this.utilisateur = utilisateur;
     }
 
 

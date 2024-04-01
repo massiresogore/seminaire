@@ -31,32 +31,78 @@ public class Evenement {
 	@Size(min = 2, max = 500)
 	private String description_evenement;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 			@JoinTable(
 					name = "planning",
 					joinColumns = @JoinColumn(name = "evenement_id"),
 					inverseJoinColumns = @JoinColumn(name = "calendrier_id")
 			)
-	List<Calendrier> calendrierList = new ArrayList<>();
+	List<Calendrier> calendrierList;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, optional = false)
 	@JoinColumn(name = "utilisateur_id")
 	private Utilisateur utilisateur;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 			@JoinTable(
 					name = "participation",
 					joinColumns = @JoinColumn(name = "evenement_id"),
 					inverseJoinColumns = @JoinColumn(name = "utilisateur_id")
 			)
-	List<Utilisateur> utilisateurList = new ArrayList<>();
+	List<Utilisateur> utilisateurList;
 
 
 	@OneToMany(fetch =FetchType.EAGER, mappedBy = "evenement", cascade = CascadeType.ALL)
-	List<Annonce> annonceList = new ArrayList<>();
+	List<Annonce> annonceList;
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "evenement", cascade = CascadeType.ALL)
-	List<Notification> notificationList = new ArrayList<>();
+	List<Notification> notificationList;
+
+	public Evenement(String adresse, String theme, String description_evenement, Utilisateur utilisateur) {
+		this.adresse = adresse;
+		this.theme = theme;
+		this.description_evenement = description_evenement;
+		this.utilisateur = utilisateur;
+	}
+
+	/*Ajout notification*/
+	public void addNotification(Notification notification)
+	{
+		if(notificationList== null){
+			notificationList = new ArrayList<>();
+		}
+		notification.setEvenement(this);
+		notificationList.add(notification);
+	}
+
+	/*Ajout Annonce*/
+	public void addAnnonce(Annonce annonce)
+	{
+		if(annonceList== null){
+			annonceList = new ArrayList<>();
+		}
+		annonce.setEvenement(this);
+		annonceList.add(annonce);
+	}
+
+	/*Ajout Utilisateur*/
+	public void addUtilisateur(Utilisateur utilisateur)
+	{
+		if(utilisateurList== null){
+			utilisateurList = new ArrayList<>();
+		}
+		utilisateur.addEvenement(this);
+		utilisateurList.add(utilisateur);
+	}
+
+	/*Ajout Calendrier*/
+	public void addCalendrier(Calendrier calendrier){
+		if (calendrierList==null){
+			calendrierList = new ArrayList<>();
+		}
+
+		calendrierList.add(calendrier);
+	}
 
 	@Override
 	public String toString() {
@@ -65,18 +111,6 @@ public class Evenement {
 				", adresse='" + adresse + '\'' +
 				", theme='" + theme + '\'' +
 				", description_evenement='" + description_evenement + '\'' +
-				", calendrierList=" + calendrierList +
-				", utilisateur=" + utilisateur +
-				", utilisateurList=" + utilisateurList +
-				", annonceList=" + annonceList +
-				", notificationList=" + notificationList +
 				'}';
-	}
-
-	public Evenement(String adresse, String theme, String description_evenement, Utilisateur utilisateur) {
-		this.adresse = adresse;
-		this.theme = theme;
-		this.description_evenement = description_evenement;
-		this.utilisateur = utilisateur;
 	}
 }
