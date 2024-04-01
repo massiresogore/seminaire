@@ -1,5 +1,4 @@
 package com.warrios.seminaire;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,5 +9,4 @@ public class SeminaireApplication {
 		SpringApplication.run(SeminaireApplication.class, args);
 
 	}
-
 }
