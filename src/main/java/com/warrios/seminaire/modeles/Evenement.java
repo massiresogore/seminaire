@@ -52,10 +52,31 @@ public class Evenement {
 	List<Utilisateur> utilisateurList = new ArrayList<>();
 
 
-	@OneToMany(mappedBy = "evenement")
+	@OneToMany(fetch =FetchType.EAGER, mappedBy = "evenement", cascade = CascadeType.ALL)
 	List<Annonce> annonceList = new ArrayList<>();
 
-	@OneToMany(mappedBy = "evenement")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "evenement", cascade = CascadeType.ALL)
 	List<Notification> notificationList = new ArrayList<>();
 
+	@Override
+	public String toString() {
+		return "Evenement{" +
+				"id_evenement=" + id_evenement +
+				", adresse='" + adresse + '\'' +
+				", theme='" + theme + '\'' +
+				", description_evenement='" + description_evenement + '\'' +
+				", calendrierList=" + calendrierList +
+				", utilisateur=" + utilisateur +
+				", utilisateurList=" + utilisateurList +
+				", annonceList=" + annonceList +
+				", notificationList=" + notificationList +
+				'}';
+	}
+
+	public Evenement(String adresse, String theme, String description_evenement, Utilisateur utilisateur) {
+		this.adresse = adresse;
+		this.theme = theme;
+		this.description_evenement = description_evenement;
+		this.utilisateur = utilisateur;
+	}
 }

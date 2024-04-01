@@ -29,8 +29,13 @@ public class Calendrier {
 	)
 	List<Evenement> evenementList = new ArrayList<>();
 
-
-
-
-
+	@Override
+	public String toString() {
+		return "Calendrier{" +
+				"id_calendrier=" + id_calendrier +
+				", date_calendrier=" + date_calendrier +
+				", utilisateur=" + utilisateur +
+				", evenementList=" + evenementList +
+				'}';
+	}
 }
