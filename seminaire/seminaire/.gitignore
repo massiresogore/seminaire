@@ -1,0 +1,13 @@
+.idea/
+target/
+.factorypath
+.classpath
+.settings
+HELP.md
+mvnw
+mvnw.cmd
+nnn
+../.idea/
+conception/presentation/~$Presentation_teams_vampires.pptx
+conception/presentation/.DS_Store
+conception/presentation/~$Presentation_teams_vampires.ppt
