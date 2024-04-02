@@ -20,42 +20,42 @@ public class Utilisateur {
     private Integer id_user;
 
     @NotNull
-    @Size(min = 2, max = 14)
+    @Size(min = 2, max = 100)
     private String nom;
 
     @NotNull
-    @Size(min = 2, max = 14)
+    @Size(min = 2, max = 100)
     private String prenom;
 
     @NotNull
-    @Size(min = 2, max = 14)
+    @Size(min = 2, max = 100)
     private String affectation;
 
     @NotNull
-    @Size(min = 2, max = 14)
+    @Size(min = 2, max = 100)
     private String url;
 
     @NotNull
-    @Size(min = 2, max = 14)
+    @Size(min = 2, max = 100)
     private String login;
 
     @NotNull
-    @Size(min = 2, max = 14)
+    @Size(min = 2, max = 100)
     private String mdp;
 
     @NotNull
-    @Size(min = 2, max = 14)
+    @Size(min = 2, max = 100)
     private String email;
 
     @NotNull
-    @Size(min = 2, max = 14)
+    @Size(min = 2, max = 100)
     private String telephone;
 
     @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
-    List<Calendrier> calendrierList;//ok
+    List<Calendrier> calendrierList;
 
     @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
-    List<Evenement> evenementList;//ok
+    List<Evenement> evenementList;
 
     @ManyToMany
             @JoinTable(
@@ -66,10 +66,10 @@ public class Utilisateur {
     List<Evenement> evenement_participant_list;
 
     @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL )
-    List<Annonce> annonceList;//ok
+    List<Annonce> annonceList;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "utilisateur", cascade = CascadeType.ALL)
-    List<Commentaire> commentaireList;//ok
+    List<Commentaire> commentaireList;
 
     //Utilisateur sans id, l'ors de la création d'un utilisateur
     public Utilisateur(String nom, String prenom, String affectation, String url, String login, String mdp, String email, String telephone) {

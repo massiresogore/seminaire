@@ -18,29 +18,26 @@ public class Annonce {
     private LocalDate date;
 
     @NotNull
-    @Size(min = 2, max = 14)
+    @Size(min = 2, max = 100)
     private String titre;
 
     @NotNull
-    @Size(min = 2, max = 20)
+    @Size(min = 2, max = 100)
     private String lieu;
 
     private LocalDate date_update;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "utilisateur_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "utilisateur_id" )
     private Utilisateur utilisateur;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "evenement_id")
     private Evenement evenement;
 
-    public Annonce(LocalDate date, String titre, String lieu, LocalDate date_update, Utilisateur utilisateur, Evenement evenement) {
+    public Annonce(LocalDate date, String titre, String lieu) {
         this.date = date;
         this.titre = titre;
         this.lieu = lieu;
-        this.date_update = date_update;
-        this.utilisateur = utilisateur;
-        this.evenement = evenement;
     }
 }

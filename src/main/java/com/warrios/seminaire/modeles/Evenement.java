@@ -40,7 +40,7 @@ public class Evenement {
 	List<Calendrier> calendrierList;
 
 	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, optional = false)
-	@JoinColumn(name = "utilisateur_id")
+	@JoinColumn(name = "intervenant_id")
 	private Utilisateur utilisateur;
 
 	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
@@ -58,11 +58,10 @@ public class Evenement {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "evenement", cascade = CascadeType.ALL)
 	List<Notification> notificationList;
 
-	public Evenement(String adresse, String theme, String description_evenement, Utilisateur utilisateur) {
+	public Evenement(String adresse, String theme, String description_evenement) {
 		this.adresse = adresse;
 		this.theme = theme;
 		this.description_evenement = description_evenement;
-		this.utilisateur = utilisateur;
 	}
 
 	/*Ajout notification*/
