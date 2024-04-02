@@ -75,7 +75,7 @@ Pour chaque entité définie, créez également son repository correspondant.
 La prochaine présentation est prévue pour le lundi
 
 ### A.Troisième partie
-1. Créez un service (CRUD) pour chaque entité.
-2. Mettez en place le header et mettre les liens.
-3. Récupérez les actions dans les contrôleurs respectifs.
+1. Créez un service (CRUD) pour chaque entité. ✅
+2. Mettez en place le header et mettre les liens. ✅
+3. Récupérez les actions dans les contrôleurs respectifs. ✅
 
