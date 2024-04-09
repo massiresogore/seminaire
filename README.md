@@ -79,3 +79,8 @@ La prochaine présentation est prévue pour le lundi
 2. Mettez en place le header et mettre les liens. ✅
 3. Récupérez les actions dans les contrôleurs respectifs. ✅
 
+
+### A Quatrième partie
+1. Documenter toutes les méthodes de vos services (CRUD).
+2. Ecrivez les tests unitaires pour toutes les méthodes de vos services.
+
